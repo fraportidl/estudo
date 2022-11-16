@@ -1,10 +1,46 @@
-function Carro (velocidadeMaximo = 200, delta =5) {
+
+var status = ''
+
+function Carro (velocidadeMaxima = 200, delta =5) {
     // atributo privado
-    let _velocidadeAtual = 0
+    let velocidadeAtual = 0
     
     // metodo publico
     this.acelerar = function () {
-        if(velocidadeAtual + delta <= velocidadeMaximo)
+        if(velocidadeAtual + delta <= velocidadeMaxima){
+            velocidadeAtual += delta
+        } else {
+            velocidadeAtual = velocidadeMaxima
+            var status = 'Velocidade limite'
+
+        }
+    }
+
+    // metodo publico
+    this.getVelocidadeAtual = () => {
+        return velocidadeAtual
     }
 }
 
+const uno = new Carro
+uno.acelerar()
+console.log(uno.getVelocidadeAtual())
+
+const ferrari = new Carro(350, 40)
+ferrari.acelerar()
+ferrari.acelerar()
+ferrari.acelerar()
+ferrari.acelerar()
+ferrari.acelerar()
+ferrari.acelerar()
+ferrari.acelerar()
+ferrari.acelerar()
+ferrari.acelerar()
+ferrari.acelerar()
+
+if(status == 'Velocidade limite') {
+    console.log(`ferrari.getVelocidadeAtual() ${status} `)    
+} else {
+
+    console.log(ferrari.getVelocidadeAtual())
+}
